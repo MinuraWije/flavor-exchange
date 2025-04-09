@@ -5,13 +5,13 @@ interface AuthState{
     user:string | null
 }
 
-const intitialState: AuthState = {
+const initialState: AuthState = {
     user: localStorage.getItem('user') || null,
 }
 
 const authSlice = createSlice({
     name: "auth",
-    intitialState,
+    initialState,
     reducers:{
         login(state, action:PayloadAction<string>){
             state.user = action.payload
