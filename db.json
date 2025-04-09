@@ -1,0 +1,22 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "title": "Spaghetti Carbonara",
+      "cookingTime": "20 mins",
+      "rating": 4.5,
+      "image": "https://source.unsplash.com/featured/?spaghetti",
+      "ingredients": ["Spaghetti", "Eggs", "Parmesan", "Bacon"],
+      "instructions": "Boil pasta. Cook bacon. Mix eggs and cheese. Combine everything."
+    },
+    {
+      "id": "2",
+      "title": "Avocado Toast",
+      "cookingTime": "10 mins",
+      "rating": 4.7,
+      "image": "https://source.unsplash.com/featured/?avocado-toast",
+      "ingredients": ["Bread", "Avocado", "Salt", "Lemon Juice"],
+      "instructions": "Toast bread. Mash avocado. Mix with salt and lemon. Spread and enjoy."
+    }
+  ]
+}
