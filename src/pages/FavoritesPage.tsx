@@ -7,7 +7,14 @@ const FavoritesPage = () => {
     const favorites = useSelector((state: RootState) => state.favorites.favorites);
 
     return (
-        <Box sx={{ padding: 2 }}>
+        <Box sx={{
+                maxWidth: 1200,
+                margin: '0 auto',
+                backgroundColor: 'white',
+                padding: 4,
+                borderRadius: 3,
+            }}
+        >
             <Typography variant="h4" gutterBottom>Favorite Recipes</Typography>
             <Grid container spacing={3}>
                 {favorites.length > 0 ? (

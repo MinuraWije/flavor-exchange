@@ -49,7 +49,16 @@ const RecipeCard = ({ recipe, onEdit, onDelete }: { recipe: Recipe }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={() => navigate(`/recipe/${recipe.id}`)}>
+                <Button
+                    sx={{color: 'grey.600',
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        '&:hover': {
+                            /*color: 'primary.main',*/
+                            backgroundColor: 'grey.200',
+                        },
+                    }}
+                    size="small" onClick={() => navigate(`/recipe/${recipe.id}`)}>
                     View Recipe
                 </Button>
                 <IconButton onClick={toggleFavorite}>

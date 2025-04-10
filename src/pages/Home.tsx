@@ -31,9 +31,23 @@ export const Home = () => {
         : [];
 
     return (
-        <Box sx={{ minHeight: '100vh', padding: 2, backgroundColor: '#f5f5f5' }}>
-            <Box sx={{ maxWidth: 1200, margin: '0 auto' }}>
-                <Typography variant="h3" align="center" gutterBottom>
+            <Box
+                sx={{
+                    maxWidth: 1200,
+                    margin: '0 auto',
+                    backgroundColor: 'white',
+                    padding: 4,
+                    borderRadius: 3,
+
+                }}
+            >
+                <Typography
+                    variant="h4"
+                    align="center"
+                    gutterBottom
+                    sx={{ fontWeight: 'bold', color: '#333' }}
+                    className="text-gray-800"
+                >
                     Recipe Feed
                 </Typography>
 
@@ -44,32 +58,42 @@ export const Home = () => {
                     fullWidth
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    sx={{ marginBottom: 4 }}
+                    sx={{
+                        marginBottom: 4,
+                        '& .MuiOutlinedInput-root': {
+                            borderRadius: 2,
+                        },
+                    }}
                 />
 
                 {/* Recipe Grid */}
                 {loading ? (
-                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                         <CircularProgress />
                     </Box>
                 ) : (
-                    <Grid container spacing={3}>
+                    <>
                         {filteredRecipes.length > 0 ? (
-                            filteredRecipes.map((recipe:Recipe) => (
-                                <Grid item xs={12} sm={6} md={4} lg={3} key={recipe.id}>
-                                    <RecipeCard recipe={recipe} />
-                                </Grid>
-                            ))
+                            <Grid container spacing={3}>
+                                {filteredRecipes.map((recipe: Recipe) => (
+                                    <Grid item xs={12} sm={6} md={4} lg={3} key={recipe.id}>
+                                        <RecipeCard recipe={recipe} />
+                                    </Grid>
+                                ))}
+                            </Grid>
                         ) : (
-                            <Typography variant="h6" align="center" color="textSecondary">
+                            <Typography
+                                variant="h6"
+                                align="center"
+                                color="text.secondary"
+                                sx={{ mt: 4 }}
+                            >
                                 No recipes found.
                             </Typography>
                         )}
-                    </Grid>
-
+                    </>
                 )}
             </Box>
-        </Box>
 
     );
 }

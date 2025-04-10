@@ -105,13 +105,25 @@ const MyRecipesPage = () => {
     };
 
     return (
-        <div>
-            <Typography variant="h4" gutterBottom>My Recipes</Typography>
-            <Button className="py-4 px-4 mb-5" variant="contained" onClick={handleOpenAddRecipe}>
+        <div className="max-w-[1200px] mx-auto">
+            <Typography
+                sx={{
+                    marginTop : 4,
+                    marginLeft : 4
+                }}
+                variant="h4" gutterBottom>My Recipes</Typography>
+            <Button
+                sx={{
+                    marginTop: 2,
+                    marginBottom: 4,
+                    marginLeft : 4,
+                    color: 'blue.200',
+                }}
+                variant="contained" onClick={handleOpenAddRecipe}>
                 Add New Recipe
             </Button>
 
-            <Grid container spacing={3}>
+            <Grid sx={{marginLeft:4}} container spacing={3}>
                 {userRecipes.length > 0 ? (
                     userRecipes.map((recipe) => (
                         <Grid item xs={12} sm={6} md={4} key={recipe.id}>
