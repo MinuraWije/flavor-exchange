@@ -5,7 +5,7 @@
       "title": "Spaghetti Carbonara",
       "cookingTime": "20 mins",
       "rating": 4.5,
-      "image": "https://source.unsplash.com/featured/?spaghetti",
+      "image": "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "ingredients": ["Spaghetti", "Eggs", "Parmesan", "Bacon"],
       "instructions": "Boil pasta. Cook bacon. Mix eggs and cheese. Combine everything."
     },
@@ -14,7 +14,7 @@
       "title": "Avocado Toast",
       "cookingTime": "10 mins",
       "rating": 4.7,
-      "image": "https://source.unsplash.com/featured/?avocado-toast",
+      "image": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "ingredients": ["Bread", "Avocado", "Salt", "Lemon Juice"],
       "instructions": "Toast bread. Mash avocado. Mix with salt and lemon. Spread and enjoy."
     }
