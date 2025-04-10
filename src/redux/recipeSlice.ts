@@ -31,7 +31,7 @@ export const updateRecipe = createAsyncThunk('recipes/update', async (recipe: Re
         return response.data;
     } catch (error) {
         console.error('Error updating recipe:', error);
-        throw error;  // This will allow you to catch errors in the component
+        throw error;
     }
 });
 
@@ -43,11 +43,7 @@ export const deleteRecipe = createAsyncThunk('recipes/delete', async (id: string
 const recipeSlice = createSlice({
     name: 'recipes',
     initialState,
-    reducers:{
-        /*addRecipe: (state, action:PayloadAction<Recipe>) => {
-            state.recipes.push(action.payload)
-        },*/
-    },
+    reducers:{},
 
     extraReducers:(builder) => {
         builder
@@ -105,5 +101,5 @@ const recipeSlice = createSlice({
     }
 })
 
-//export const {addRecipe} = recipeSlice.actions;
+
 export default recipeSlice.reducer
