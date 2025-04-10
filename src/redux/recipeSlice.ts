@@ -16,7 +16,7 @@ const initialState:RecipeState = {
 }
 
 export const fetchRecipes = createAsyncThunk('recipes/fetch', async () => {
-    const res = await axios.get('/api/recipes')
+    const res = await axios.get('http://localhost:3001/recipes')
     return res.data;
 })
 
