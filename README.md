@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# 🍽️ Flavor Exchange
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern recipe-sharing platform built with React, Redux, and Material-UI, where users can explore, favorite, and share their favorite dishes. This project demonstrates dynamic data handling, modern UI practices, and mock authentication features.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✅ Core Functionalities
+- **Recipe Feed**  
+  View a grid of recipes with cooking time, rating, and images, powered by a mock API.
 
-## Expanding the ESLint configuration
+- **Search & Filter**  
+  Instantly search recipes by title or ingredients with real-time filtering.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Recipe Details**  
+  View detailed recipe pages with ingredients, step-by-step instructions, and the ability to favorite.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Mock Authentication**  
+  Users can sign up/log in with a simple form. Data is persisted in localStorage.
+
+- **Recipe CRUD**  
+  Authenticated users can add, edit, and delete their own recipes.
+
+- **Favorites System**  
+  Favorite and unfavorite recipes with persistent state via Redux and localStorage.
+
+- **Responsive Design**  
+  Built with Material-UI for a clean, responsive user experience.
+
+### 🔥 Optional Features
+- **Social Sharing (Mock)**  
+  Share your favorite dishes with the world (simulated functionality with buttons).
+
+- **Dark Mode (Coming Soon)**  
+  Toggle between light and dark themes for a more personalized experience.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, TypeScript, Vite
+- **Routing**: React Router
+- **State Management**: Redux Toolkit
+- **Styling**: Material-UI (MUI v5)
+- **Mock API**: [JSON Server](https://github.com/typicode/json-server)
+- **Auth & Persistence**: localStorage
+
+
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+  git clone https://github.com/your-username/flavor-exchange.git
+  cd flavor-exchange
+```
+### 2. Install Dependencies
+```bash
+  npm install
+```
+### 3. Start JSON Server (Mock API)
+```bash
+  npx json-server --watch db.json --port 3001
+```
+### 4. Start the Development Server
+```bash
+  npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧪 Testing Features
+- Try signing up and logging in with a mock username.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Browse recipes and use the search bar to filter.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Add a new recipe and view it on your "My Recipes" page.
+
+- Use the "Favorite" icon to save and unsave recipes.
+
+- Edit or delete your own recipes.
+
+- Click "Share" icons to simulate social sharing.
+
+
+## 📝 Future Improvements
+
+- 🌙 Dark mode toggle
+
+- ⏱️ Cooking timer with countdown
+
+- 🍽️ Ingredient substitution suggestions
