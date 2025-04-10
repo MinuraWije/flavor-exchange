@@ -6,7 +6,12 @@
       "cookingTime": "20 mins",
       "rating": 4.5,
       "image": "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "ingredients": ["Spaghetti", "Eggs", "Parmesan", "Bacon"],
+      "ingredients": [
+        "Spaghetti",
+        "Eggs",
+        "Parmesan",
+        "Bacon"
+      ],
       "instructions": "Boil pasta. Cook bacon. Mix eggs and cheese. Combine everything."
     },
     {
@@ -15,8 +20,37 @@
       "cookingTime": "10 mins",
       "rating": 4.7,
       "image": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "ingredients": ["Bread", "Avocado", "Salt", "Lemon Juice"],
+      "ingredients": [
+        "Bread",
+        "Avocado",
+        "Salt",
+        "Lemon Juice"
+      ],
       "instructions": "Toast bread. Mash avocado. Mix with salt and lemon. Spread and enjoy."
+    },
+    {
+      "id": "3",
+      "title": "Rice",
+      "image": "https://plus.unsplash.com/premium_photo-1668782623937-56d6d64a7f36?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "ingredients": [
+        "Rice"
+      ],
+      "cookingTime": "10 mins",
+      "instructions": "Cook Rice",
+      "rating": "5",
+      "user": "Minu"
+    },
+    {
+      "id": "1744292044503",
+      "title": "Fish",
+      "image": "https://images.unsplash.com/photo-1620894580123-466ad3a0ca06?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "ingredients": [
+        "Fish"
+      ],
+      "cookingTime": "10 mins",
+      "instructions": "Cook the fish properly",
+      "rating": "4.3",
+      "user": "Minura"
     }
   ]
 }
