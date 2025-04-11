@@ -3,12 +3,10 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 type FavoritesState = {
     favorites: Recipe[];
-    currentUser: string | null;
 };
 
 const initialState: FavoritesState = {
     favorites: [],
-    currentUser: null,
 };
 
 const getKey = (user: string) => `favorites_${user}`;
@@ -22,28 +20,27 @@ const favoritesSlice = createSlice({
     name: "favorites",
     initialState,
     reducers: {
-        setCurrentUser: (state, action: PayloadAction<string | null>) => {
-            state.currentUser = action.payload;
-            state.favorites = action.payload ? loadFavorites(action.payload) : [];
+        loadUserFavorites: (state, action: PayloadAction<string>) => {
+            state.favorites = loadFavorites(action.payload);
         },
 
-        addToFavorites: (state, action: PayloadAction<Recipe>) => {
-            if(!state.currentUser) return;
-
-            const exists = state.favorites.some(r => r.id === action.payload.id);
+        addToFavorites: (state, action: PayloadAction<{user:string; recipe:Recipe}>) => {
+            const { user, recipe } = action.payload;
+            const exists = state.favorites.some(r => r.id === recipe.id);
             if (!exists) {
-                state.favorites.push(action.payload);
-                localStorage.setItem(getKey(state.currentUser), JSON.stringify(state.favorites));
+                state.favorites.push(recipe);
+                localStorage.setItem(getKey(user), JSON.stringify(state.favorites));
             }
-        },
-        removeFromFavorites: (state, action: PayloadAction<string>) => {
-            if(!state.currentUser) return;
 
-            state.favorites = state.favorites.filter(r => r.id !== action.payload);
-            localStorage.setItem(getKey(state.currentUser), JSON.stringify(state.favorites));
+        },
+        removeFromFavorites: (state, action: PayloadAction<{ user: string; recipeId: string }>) => {
+            const { user, recipeId } = action.payload;
+            state.favorites = state.favorites.filter(r => r.id !== recipeId);
+            localStorage.setItem(getKey(user), JSON.stringify(state.favorites));
+
         },
     },
 });
 
-export const { addToFavorites, removeFromFavorites, setCurrentUser } = favoritesSlice.actions;
+export const { addToFavorites, removeFromFavorites, loadUserFavorites } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

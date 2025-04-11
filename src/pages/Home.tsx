@@ -17,7 +17,7 @@ export const Home = () => {
         dispatch(fetchRecipes())
             .unwrap()
             .catch((err) => console.error("Error fetching recipes : ",err))
-            .finally(() => setLoading(false)); // Assuming fetchRecipes returns a promise
+            .finally(() => setLoading(false));
     }, [dispatch]);
 
 
