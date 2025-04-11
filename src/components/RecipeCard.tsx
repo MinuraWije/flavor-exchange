@@ -14,14 +14,16 @@ const RecipeCard = ({ recipe, onEdit, onDelete }: { recipe: Recipe }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const favorites = useSelector((state: RootState) => state.favorites.favorites);
+    const user = useSelector((state: RootState) => state.auth.user);
+
 
     const isFavorite = favorites.some((fav) => fav.id === recipe.id);
 
     const toggleFavorite = () => {
         if (isFavorite) {
-            dispatch(removeFromFavorites(recipe.id));
+            dispatch(removeFromFavorites({user,recipeId : recipe.id}));
         } else {
-            dispatch(addToFavorites(recipe));
+            dispatch(addToFavorites({user,recipe}));
         }
     };
 
@@ -54,7 +56,6 @@ const RecipeCard = ({ recipe, onEdit, onDelete }: { recipe: Recipe }) => {
                         textTransform: 'none',
                         fontWeight: 600,
                         '&:hover': {
-                            /*color: 'primary.main',*/
                             backgroundColor: 'grey.200',
                         },
                     }}
