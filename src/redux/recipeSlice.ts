@@ -40,6 +40,11 @@ export const deleteRecipe = createAsyncThunk('recipes/delete', async (id: string
     return id;
 });
 
+export const loadRecipesFromLocalStorage = createAsyncThunk("recipes/loadFromStorage", async () => {
+    const recipes = JSON.parse(localStorage.getItem("recipes") || "[]");
+    return recipes;
+});
+
 const recipeSlice = createSlice({
     name: 'recipes',
     initialState,
@@ -53,6 +58,7 @@ const recipeSlice = createSlice({
             .addCase(fetchRecipes.fulfilled, (state, action) => {
                 state.loading = false
                 state.recipes = action.payload
+                localStorage.setItem("recipes", JSON.stringify(state.recipes));
             })
             .addCase(fetchRecipes.rejected, (state, action) => {
                 state.loading = false
@@ -65,6 +71,7 @@ const recipeSlice = createSlice({
             .addCase(addRecipe.fulfilled, (state, action) => {
                 state.loading = false;
                 state.recipes.push(action.payload);
+                localStorage.setItem("recipes", JSON.stringify(state.recipes));
             })
             .addCase(addRecipe.rejected, (state, action) => {
                 state.loading = false;
@@ -79,6 +86,9 @@ const recipeSlice = createSlice({
                 const index = state.recipes.findIndex((recipe) => recipe.id === action.payload.id);
                 if (index !== -1) {
                     state.recipes[index] = action.payload;
+                    localStorage.setItem("recipes", JSON.stringify(state.recipes));
+                }else{
+                    console.warn("⚠️ Tried to update a recipe that doesn't exist:", action.payload);
                 }
             })
             .addCase(updateRecipe.rejected, (state, action) => {
@@ -92,11 +102,15 @@ const recipeSlice = createSlice({
             .addCase(deleteRecipe.fulfilled, (state, action) => {
                 state.loading = false;
                 state.recipes = state.recipes.filter((recipe) => recipe.id !== action.payload);
+                localStorage.setItem("recipes", JSON.stringify(state.recipes));
             })
             .addCase(deleteRecipe.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Failed to delete recipe';
-            });
+            })
+            .addCase(loadRecipesFromLocalStorage.fulfilled, (state, action) => {
+            state.recipes = action.payload;
+        });
 
     }
 })
