@@ -30,7 +30,7 @@
     },
     {
       "id": "3",
-      "title": "Rice",
+      "title": "Fried Rice",
       "image": "https://plus.unsplash.com/premium_photo-1668782623937-56d6d64a7f36?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "ingredients": [
         "Rice"
@@ -42,7 +42,7 @@
     },
     {
       "id": "1744292044503",
-      "title": "Fish",
+      "title": "Fish Curry",
       "image": "https://images.unsplash.com/photo-1620894580123-466ad3a0ca06?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "ingredients": [
         "Fish"
