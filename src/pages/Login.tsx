@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../redux/authSlice";
 import {RootState} from "../redux/store.ts";
-import { setCurrentUser } from '../redux/favoritesSlice.ts';
+import { loadUserFavorites } from '../redux/favoritesSlice.ts';
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -21,7 +21,8 @@ export const Login = () => {
         if (!userExists) return alert("User not found! Please Sign up");
         console.log(username);
         dispatch(login(username));
-        dispatch(setCurrentUser(username));
+        localStorage.setItem("currentUser", username);
+        dispatch(loadUserFavorites(username));
         navigate("/home");
     }
 
