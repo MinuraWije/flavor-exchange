@@ -1,16 +1,28 @@
 import {Routes, Route, Navigate} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { RootState } from './redux/store'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Layout from "./components/Layout.tsx";
 import RecipePage from './pages/RecipePage.tsx'
 import FavoritesPage from "./pages/FavoritesPage.tsx";
 import MyRecipesPage from "./pages/MyRecipesPage.tsx";
+import {useEffect} from "react";
+import {loadUserFavorites} from "./redux/favoritesSlice.ts";
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const savedUser = localStorage.getItem("currentUser");
+        if (savedUser) {
+            dispatch(loadUserFavorites(savedUser));
+        }
+    }, []);
+
     const user = useSelector((state: RootState) => state.auth.user)
+
     return (
         <>
 
