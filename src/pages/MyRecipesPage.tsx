@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { Recipe } from "../types";
 import {Grid, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions} from "@mui/material";
 import RecipeCard from "../components/RecipeCard";
-import { addRecipe, updateRecipe, deleteRecipe } from "../redux/recipeSlice";
+import {addRecipe, updateRecipe, deleteRecipe, loadRecipesFromLocalStorage} from "../redux/recipeSlice";
 
 const MyRecipesPage = () => {
     const dispatch = useDispatch();
     const recipes = useSelector((state: RootState) => state.recipes.recipes);
 
-    const currentUser = useSelector((state: RootState) => state.favorites.currentUser);
+    const currentUser = useSelector((state: RootState) => state.auth.user);
 
+    useEffect(() => {
+        dispatch(loadRecipesFromLocalStorage());
+    }, [dispatch]);
 
     const [open, setOpen] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
@@ -52,6 +55,14 @@ const MyRecipesPage = () => {
 
     const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        console.log("🔥 currentUser", currentUser);
+        console.log("🧾 newRecipe", newRecipe);
+        console.log("📦 recipes", recipes);
+
+        if (!currentUser) {
+            alert("User not logged in!");
+            return;
+        }
         if (newRecipe.title && newRecipe.image && newRecipe.ingredients.length > 0) {
             const newRecipeWithUser = {
                 ...newRecipe,
@@ -87,17 +98,32 @@ const MyRecipesPage = () => {
         }));
     };
 
-    const handleUpdate = () => {
+    const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        console.log("clicked update")
+        console.log("Current user:", currentUser);
+        if (!currentUser) {
+            alert("User not logged in!");
+            return;
+        }
+        if (!newRecipe.id) {
+            console.error("❌ newRecipe.id is undefined!");
+            return;
+        }
+
         console.log('Updating recipe with ID:', newRecipe.id);
         if (newRecipe.title && newRecipe.image && newRecipe.ingredients.length > 0) {
-            dispatch(updateRecipe(newRecipe));
+            setSelectedRecipe(null);
             handleClose();
+            dispatch(updateRecipe(newRecipe));
+
         } else {
             alert("Please fill all fields.");
         }
     };
 
-    const handleDelete = () => {
+    const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         if (selectedRecipe) {
             dispatch(deleteRecipe(selectedRecipe.id));
             handleClose();
@@ -141,6 +167,7 @@ const MyRecipesPage = () => {
 
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add New Recipe</DialogTitle>
+                <form onSubmit={(e) => e.preventDefault()}>
                 <DialogContent>
                     <TextField
                         label="Recipe Title"
@@ -195,24 +222,25 @@ const MyRecipesPage = () => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button type="button" onClick={handleClose} color="primary">
                         Cancel
                     </Button>
                     {selectedRecipe ? (
                         <>
-                            <Button onClick={handleUpdate} color="primary">
+                            <Button type="button" onClick={(e) => handleUpdate(e)} color="primary">
                                 Update Recipe
                             </Button>
-                            <Button onClick={handleDelete} color="secondary">
+                            <Button type="button" onClick={(e) => handleDelete(e)} color="secondary">
                                 Delete Recipe
                             </Button>
                         </>
                     ) : (
-                        <Button onClick={handleAdd} color="primary">
+                        <Button type="button" onClick={(e) => handleAdd(e)} color="primary">
                             Add Recipe
                         </Button>
                     )}
                 </DialogActions>
+                </form>
             </Dialog>
         </div>
     );
